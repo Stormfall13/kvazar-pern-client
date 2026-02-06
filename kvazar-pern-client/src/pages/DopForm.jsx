@@ -50,21 +50,21 @@ const DopForm = () => {
   const [executorDepartament, setExecutorDepartament] = useState([]);
   
 
-  if (!token) {
-    navigate("/login");
-    return null;
-  }
-  
-  if (!user) return; // Ждём, пока загрузится пользователь
-  
-  // ✅ список ролей, которым разрешён доступ
-  const allowedRoles = ["user", "admin"];
-  if (!allowedRoles.includes(user.role)) {
-    navigate("/"); // Нет прав — перенаправляем на главную
-    return null;
-  }
-
   useEffect(() => {
+
+    if (!token) {
+      navigate("/login");
+      return null;
+    }
+    
+    if (!user) return; // Ждём, пока загрузится пользователь
+    
+    // ✅ список ролей, которым разрешён доступ
+    const allowedRoles = ["user", "admin"];
+    if (!allowedRoles.includes(user.role)) {
+      navigate("/"); // Нет прав — перенаправляем на главную
+      return;
+    }
 
     const fetchExecutors = async () => {
       try {
@@ -84,34 +84,31 @@ const DopForm = () => {
       }
     };
 
-    fetchExecutors();
-  }, [token]);
-    
-  useEffect(() => {
-    const fetchPeriods = async () => {
-      try {
-        const res = await fetch(`${process.env.REACT_APP_API_URL}/api/date-periods`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-  
-        if (!res.ok) throw new Error("Ошибка загрузки даты периодов");
-        const data = await res.json();
-        setDatePeriods(data);
-        
-        // После загрузки периодов определяем текущий период
-        determineCurrentPeriod(data);
-      } catch (error) {
-        console.error("Ошибка:", error);
-      }
-    };
-
     fetchPeriods();
-  }, [token])
+    fetchExecutors();
+  }, [token, user, navigate]);
     
+    
+  const fetchPeriods = async () => {
+    try {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/date-periods`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!res.ok) throw new Error("Ошибка загрузки даты периодов");
+      const data = await res.json();
+      setDatePeriods(data);
+      
+      // После загрузки периодов определяем текущий период
+      determineCurrentPeriod(data);
+    } catch (error) {
+      console.error("Ошибка:", error);
+    }
+  };
 
     // Функция для обновления service и product в зависимости от отдела исполнителя и количества ошибок
   const updateServiceAndProduct = () => {
