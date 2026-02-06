@@ -34,17 +34,17 @@ const QaForm = () => {
           </button>
           </div>
 
+          <DopForm />
+          <SiteForm />
 
-          <div className="tab-content">
+          {/* <div className="tab-content">
           {active === "tab1" && (
           <div role="tabpanel"><DopForm /></div>
           )}
-
-
           {active === "tab2" && (
           <div role="tabpanel"><SiteForm /></div>
           )}
-          </div>
+          </div> */}
         </div>
     </div>
   )
