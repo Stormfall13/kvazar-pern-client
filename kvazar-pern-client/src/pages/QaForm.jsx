@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom"
-import { useState } from "react"
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import DopForm from "../components/DopForm";
 import SiteForm from "../components/SiteForm";
@@ -8,6 +10,24 @@ import "./horizontalTabs.css";
 
 const QaForm = () => {
   const [active, setActive] = useState("tab1");
+
+  const navigate = useNavigate();
+  const token = useSelector((state) => state.auth.token);
+  const user = useSelector((state) => state.auth.user);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+      return;
+    }
+    if (!user) return;
+
+    const allowedRoles = ["user", "admin"];
+    if (!allowedRoles.includes(user.role)) {
+      navigate("/");
+      return;
+    }
+  }, [token, user, navigate]);
 
   return (
     <div>
