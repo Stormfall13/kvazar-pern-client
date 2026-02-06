@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import DopForm from "../components/DopForm";
+import DopForm from "./DopForm";
 import SiteForm from "../components/SiteForm";
 
 import "./horizontalTabs.css";
