@@ -33,7 +33,8 @@ const DopForm = () => {
   const [counting, setCounting] = useState(localStorage.getItem('counting') || '');
   const [iteration, setIteration] = useState(localStorage.getItem('iteration') || '');
   const [point, setPoint] = useState(localStorage.getItem('point') || '');
-  const [inspector, setInspector] = useState(user.username);
+  // const [inspector, setInspector] = useState(user.username);
+  const [inspector, setInspector] = useState(user?.username || '');
   const [departament, setDepartament] = useState(localStorage.getItem('departament') || '');
   const [delayTester, setDelayTester] = useState(localStorage.getItem('delayTester') || '');
   const [delayExecutor, setDelayExecutor] = useState(localStorage.getItem('delayExecutor') || '');
@@ -57,7 +58,7 @@ const DopForm = () => {
     //   // return null;
     // }
     
-    // if (!user) return; // Ждём, пока загрузится пользователь
+    if (!user) return <div>Загрузка...</div>; // Ждём, пока загрузится пользователь
     
     // // ✅ список ролей, которым разрешён доступ
     // const allowedRoles = ["user", "admin"];
