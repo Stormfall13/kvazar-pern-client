@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { calculateWeek } from "../utils/weekCalculator";
 
 import closeImg from '../assets/close.svg';
-import '../components/formStyles.css';
+import './formStyles.css';
 
 import { serviceDepartments, productDepartments } from "../utils/executorBase";
 

@@ -14,7 +14,7 @@ const DatePeriodsPage = lazy(() => import("./pages/DatePeriodsPage"));
 const Favorites = lazy(() => import('./pages/Favorites'));
 const QaPage = lazy(() => import("./pages/QaPage"));
 const QaForm = lazy(() => import("./pages/QaForm"));
-const DopForm = lazy(() => import("./pages/DopForm"));
+const DopForm = lazy(() => import("./components/DopForm"));
 
 const DopWorkTable = lazy(() => import("./pages/DopWorkTable"));
 

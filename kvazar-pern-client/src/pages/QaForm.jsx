@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import DopForm from "./DopForm";
+import DopForm from "../components/DopForm";
 import SiteForm from "../components/SiteForm";
 
 import "./horizontalTabs.css";
@@ -54,17 +54,14 @@ const QaForm = () => {
           </button>
           </div>
 
-          <DopForm />
-          <SiteForm />
-
-          {/* <div className="tab-content">
+          <div className="tab-content">
           {active === "tab1" && (
           <div role="tabpanel"><DopForm /></div>
           )}
           {active === "tab2" && (
           <div role="tabpanel"><SiteForm /></div>
           )}
-          </div> */}
+          </div>
         </div>
     </div>
   )
