@@ -14,7 +14,6 @@ const DatePeriodsPage = lazy(() => import("./pages/DatePeriodsPage"));
 const Favorites = lazy(() => import('./pages/Favorites'));
 const QaPage = lazy(() => import("./pages/QaPage"));
 const QaForm = lazy(() => import("./pages/QaForm"));
-const DopForm = lazy(() => import("./components/DopForm"));
 
 const DopWorkTable = lazy(() => import("./pages/DopWorkTable"));
 
@@ -46,7 +45,6 @@ const AppRouter = () => {
                     <Route path="/qa-form" element={<ProtectedRoute allowedRoles={["admin", "user"]}> <QaForm /> </ProtectedRoute> } />
                     <Route path="/favorites" element={<ProtectedRoute allowedRoles={["admin", "user"]}> <Favorites /> </ProtectedRoute> } />
                     <Route path="/date-periods" element={<ProtectedRoute allowedRoles={["admin", "user"]}> <DatePeriodsPage /> </ProtectedRoute> } />
-                    <Route path="/dop-form" element={<ProtectedRoute allowedRoles={["admin", "user"]}> <DopForm /> </ProtectedRoute> } />
                     
                 </Routes>
             </Suspense>

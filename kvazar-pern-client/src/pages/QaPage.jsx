@@ -4,7 +4,7 @@ const QaPage = () => {
   return (
     <div>
       <Link to="/dop-work">Таблица</Link>
-      <Link to="/dop-form">Форма</Link>
+      <Link to="/qa-form">Форма</Link>
     </div>
   )
 }

@@ -957,7 +957,7 @@ const toggleFavorite = async (dopId) => {
   return (
     <div className="table__container">
       <div className="table-header">
-        <Link to="/dop-form" className="form-link">Форма</Link>
+        <Link to="/qa-page" className="form-link">Форма</Link>
         <h1>Таблица дополнительных работ</h1>
         {isEditing && (
           <div className="edit-notice">
