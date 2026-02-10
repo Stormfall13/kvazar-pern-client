@@ -52,19 +52,19 @@ const DopForm = () => {
 
   useEffect(() => {
 
-    // if (!token) {
-    //   navigate("/login");
-    //   return null;
-    // }
+    if (!token) {
+      navigate("/login");
+      // return null;
+    }
     
-    // if (!user) return; // Ждём, пока загрузится пользователь
+    if (!user) return; // Ждём, пока загрузится пользователь
     
-    // // ✅ список ролей, которым разрешён доступ
-    // const allowedRoles = ["user", "admin"];
-    // if (!allowedRoles.includes(user.role)) {
-    //   navigate("/"); // Нет прав — перенаправляем на главную
-    //   return;
-    // }
+    // ✅ список ролей, которым разрешён доступ
+    const allowedRoles = ["user", "admin"];
+    if (!allowedRoles.includes(user.role)) {
+      navigate("/"); // Нет прав — перенаправляем на главную
+      return;
+    }
 
     const fetchExecutors = async () => {
       try {
