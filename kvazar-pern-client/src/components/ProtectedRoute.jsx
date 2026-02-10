@@ -75,18 +75,8 @@ import { useSelector } from "react-redux";
 const ProtectedRoute = ({ children, allowedRoles = [] }) => {
     const { user, token, isLoading } = useSelector((state) => state.auth);
 
-    // Отладочные логи
-    console.log("🔐 ProtectedRoute:", {
-        hasToken: !!token,
-        hasUser: !!user,
-        isLoading,
-        userRole: user?.role,
-        allowedRoles
-    });
-
     // 1. Пока идёт загрузка - показываем заглушку
     if (isLoading) {
-        console.log("⏳ ProtectedRoute: Загрузка состояния аутентификации...");
         return (
             <div style={{ 
                 padding: '40px', 
@@ -105,18 +95,13 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
 
     // 2. Проверяем наличие токена и пользователя
     if (!token || !user) {
-        console.log("❌ ProtectedRoute: Нет токена или пользователя → /login");
         return <Navigate to="/login" replace />;
     }
-
     // 3. Проверяем роль
     if (allowedRoles.length > 0 && !allowedRoles.includes(user.role)) {
-        console.log(`🚫 ProtectedRoute: Роль ${user.role} не разрешена → /`);
         return <Navigate to="/" replace />;
     }
-
     // 4. Доступ разрешён
-    console.log("✅ ProtectedRoute: Доступ разрешён");
     return children;
 };
 
