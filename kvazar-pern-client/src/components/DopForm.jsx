@@ -16,30 +16,29 @@ const DopForm = () => {
   const token = useSelector((state) => state.auth.token);
   const user = useSelector((state) => state.auth.user);
 
-  const [reglament, setReglament] = useState(localStorage.getItem('reglament') || '');
-  const [executor, setExecutor] = useState(localStorage.getItem('executor') || '');
-  const [amount, setAmount] = useState(localStorage.getItem('amount') || '1-2');
-  const [typeWork, setTypeWork] = useState(localStorage.getItem('typeWork') || 'Типовая');
-  const [typeTest, setTypeTest] = useState(localStorage.getItem('typeTest') || '');
-  const [recommen, setRecommen] = useState(localStorage.getItem('recommen') || '0');
-  const [errors, setErrors] = useState(localStorage.getItem('errors') || '0');
-  const [critic, setCritic] = useState(localStorage.getItem('critic') || '0');
+  const [reglament, setReglament] = useState('');
+  const [executor, setExecutor] = useState('');
+  const [amount, setAmount] = useState('');
+  const [typeWork, setTypeWork] = useState('');
+  const [typeTest, setTypeTest] = useState('');
+  const [recommen, setRecommen] = useState('0');
+  const [errors, setErrors] = useState('0');
+  const [critic, setCritic] = useState('0');
   /*##########*/
   const [recomenPoint, setRecommenPoint] = useState(0);
   const [errorsPoint, setErrorPoint] = useState(0);
   const [criticPoint, setCriticPoint] = useState(0);
   const [generalPoint, setGeneralPoint] = useState(0);
   /*##########*/
-  const [counting, setCounting] = useState(localStorage.getItem('counting') || '');
-  const [iteration, setIteration] = useState(localStorage.getItem('iteration') || '');
-  const [point, setPoint] = useState(localStorage.getItem('point') || '');
-  // const [inspector, setInspector] = useState(user.username);
-  const [inspector, setInspector] = useState(user?.username || '');
-  const [departament, setDepartament] = useState(localStorage.getItem('departament') || '');
-  const [delayTester, setDelayTester] = useState(localStorage.getItem('delayTester') || '');
-  const [delayExecutor, setDelayExecutor] = useState(localStorage.getItem('delayExecutor') || '');
-  const [commentError, setCommentError] = useState(localStorage.getItem('commentError') || '');
-  const [linkReport, setLinkReport] = useState(localStorage.getItem('linkReport') || '');
+  const [counting, setCounting] = useState('');
+  const [iteration, setIteration] = useState('');
+  const [point, setPoint] = useState('');
+  const [inspector, setInspector] = useState(user.username);
+  const [departament, setDepartament] = useState('');
+  const [delayTester, setDelayTester] = useState('');
+  const [delayExecutor, setDelayExecutor] = useState('');
+  const [commentError, setCommentError] = useState('');
+  const [linkReport, setLinkReport] = useState('');
   const [reportPeriods, setReportPeriods] = useState('');
   const [datePeriods, setDatePeriods] = useState([]);
   const [service, setService] = useState(' ');
@@ -58,7 +57,7 @@ const DopForm = () => {
     //   // return null;
     // }
     
-    if (!user) return <div>Загрузка...</div>; // Ждём, пока загрузится пользователь
+    // if (!user) return; // Ждём, пока загрузится пользователь
     
     // // ✅ список ролей, которым разрешён доступ
     // const allowedRoles = ["user", "admin"];
